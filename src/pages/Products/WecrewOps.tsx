@@ -444,16 +444,16 @@ export const WecrewOpsPage: FC = () => {
           </div>
 
           {/* Active Module Display */}
-          <Reveal className="mt-8">
-            <div className="card p-8 sm:p-10 border border-line bg-base-raised shadow-card">
-              <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-                <div>
+          <Reveal className="mt-8 min-w-0">
+            <div className="card min-w-0 overflow-hidden p-5 sm:p-10 border border-line bg-base-raised shadow-card">
+              <div className="grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+                <div className="min-w-0">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E05D44]/10 px-3 py-1 text-xs font-semibold text-[#E05D44]">
                     <selectedModule.icon className="h-3.5 w-3.5" />
                     {selectedModule.badge}
                   </span>
 
-                  <h3 className="display-2 mt-4 text-ink font-display">
+                  <h3 className="display-2 mt-4 break-words text-ink font-display">
                     {selectedModule.title}
                   </h3>
 
@@ -463,19 +463,19 @@ export const WecrewOpsPage: FC = () => {
 
                   <ul className="mt-6 space-y-2.5">
                     {selectedModule.points.map((pt) => (
-                      <li key={pt} className="flex items-start gap-2.5 text-sm text-ink-body">
+                      <li key={pt} className="flex min-w-0 items-start gap-2.5 text-sm text-ink-body">
                         <CheckCircle2 className="h-4 w-4 shrink-0 text-[#E05D44] mt-0.5" />
-                        <span>{pt}</span>
+                      <span className="min-w-0 break-words">{pt}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-8 flex items-center gap-4">
+                  <div className="mt-8 flex min-w-0 flex-wrap items-center gap-4">
                     <a
                       href={wecrewOps.externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#E05D44] hover:text-[#c44a33] transition-colors"
+                      className="inline-flex min-w-0 flex-wrap items-center gap-1.5 break-words text-sm font-semibold text-[#E05D44] hover:text-[#c44a33] transition-colors"
                     >
                       <span>Explore this module in live console</span>
                       <ArrowUpRight className="h-4 w-4" />
@@ -484,12 +484,12 @@ export const WecrewOpsPage: FC = () => {
                 </div>
 
                 {/* Module Code/Data Preview */}
-                <div className="rounded-xl border border-line bg-navy-950 p-5 font-mono text-xs text-white/80 shadow-inner">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-3 text-white/50">
-                    <span>module::{selectedModule.id}.spec</span>
-                    <span className="text-[#F27A59]">verified-schema</span>
+                <div className="min-w-0 overflow-hidden rounded-xl border border-line bg-navy-950 p-4 sm:p-5 font-mono text-xs text-white/80 shadow-inner">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 text-white/50">
+                    <span className="break-all">module::{selectedModule.id}.spec</span>
+                    <span className="break-all text-[#F27A59]">verified-schema</span>
                   </div>
-                  <pre className="mt-4 overflow-x-auto text-[0.82rem] leading-relaxed text-cyan-300">
+                  <pre className="mt-4 max-w-full overflow-x-auto text-[0.82rem] leading-relaxed text-cyan-300">
                     {JSON.stringify(
                       {
                         module: selectedModule.title,

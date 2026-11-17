@@ -751,13 +751,13 @@ export const SentinelPage: FC = () => {
           {(() => {
             const current = disciplinesData.find((d) => d.id === activeDiscipline) || disciplinesData[0];
             return (
-              <div className="mt-10 rounded-2xl border border-white/15 bg-navy-950/90 p-6 sm:p-10 shadow-2xl backdrop-blur-md">
-                <div className="grid gap-10 lg:grid-cols-12 items-center">
-                  <div className="lg:col-span-7">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-mono text-[#4EE0C2]">
-                      <span>{current.badge}</span>
-                      <span>·</span>
-                      <span>{current.metrics}</span>
+              <div className="mt-10 rounded-2xl border border-white/15 bg-navy-950/90 p-4 sm:p-10 shadow-2xl backdrop-blur-md">
+                <div className="grid min-w-0 gap-10 lg:grid-cols-12 items-center">
+                  <div className="min-w-0 lg:col-span-7">
+                    <div className="flex w-fit max-w-full flex-col items-start gap-1 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-mono text-[#4EE0C2] sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:py-1">
+                      <span className="shrink-0">{current.badge}</span>
+                      <span className="hidden sm:inline">·</span>
+                      <span className="min-w-0 break-words">{current.metrics}</span>
                     </div>
 
                     <h3 className="display-2 mt-4 text-white font-display">{current.title}</h3>
@@ -794,7 +794,7 @@ export const SentinelPage: FC = () => {
                     </div>
                   </div>
 
-                  <div className="lg:col-span-5 rounded-xl border border-white/10 bg-white/[0.03] p-6 font-mono text-xs">
+                  <div className="min-w-0 lg:col-span-5 rounded-xl border border-white/10 bg-white/[0.03] p-4 sm:p-6 font-mono text-xs">
                     <div className="flex items-center justify-between border-b border-white/10 pb-3">
                       <span className="text-white/50 uppercase tracking-wider">
                         Operational Telemetry
@@ -802,25 +802,25 @@ export const SentinelPage: FC = () => {
                       <current.icon className="h-4 w-4 text-[#4EE0C2]" />
                     </div>
                     <div className="mt-4 space-y-3">
-                      <div className="flex justify-between border-b border-white/5 pb-2">
-                        <span className="text-white/60">Execution Plane:</span>
-                        <span className="text-white font-semibold">eBPF / Gateway Plugin</span>
+                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-3 border-b border-white/5 pb-2">
+                        <span className="min-w-0 break-words text-white/60">Execution Plane:</span>
+                        <span className="min-w-0 break-words text-left font-semibold text-white">eBPF / Gateway Plugin</span>
                       </div>
-                      <div className="flex justify-between border-b border-white/5 pb-2">
-                        <span className="text-white/60">Inspection Incurred Latency:</span>
-                        <span className="text-brand-green-400 font-semibold">&lt; 0.4 ms</span>
+                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-3 border-b border-white/5 pb-2">
+                        <span className="min-w-0 break-words text-white/60">Inspection Incurred Latency:</span>
+                        <span className="min-w-0 break-words text-left font-semibold text-brand-green-400">&lt; 0.4 ms</span>
                       </div>
-                      <div className="flex justify-between border-b border-white/5 pb-2">
-                        <span className="text-white/60">False-Positive Rate:</span>
-                        <span className="text-white font-semibold">&lt; 0.01%</span>
+                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-3 border-b border-white/5 pb-2">
+                        <span className="min-w-0 break-words text-white/60">False-Positive Rate:</span>
+                        <span className="min-w-0 break-words text-left font-semibold text-white">&lt; 0.01%</span>
                       </div>
-                      <div className="flex justify-between border-b border-white/5 pb-2">
-                        <span className="text-white/60">OWASP Coverage:</span>
-                        <span className="text-[#4EE0C2] font-semibold">10 / 10 Categories</span>
+                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-3 border-b border-white/5 pb-2">
+                        <span className="min-w-0 break-words text-white/60">OWASP Coverage:</span>
+                        <span className="min-w-0 break-words text-left font-semibold text-[#4EE0C2]">10 / 10 Categories</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-white/60">Evidence Cryptography:</span>
-                        <span className="text-white font-semibold">SHA-256 Verified</span>
+                      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-3">
+                        <span className="min-w-0 break-words text-white/60">Evidence Cryptography:</span>
+                        <span className="min-w-0 break-words text-left font-semibold text-white">SHA-256 Verified</span>
                       </div>
                     </div>
                   </div>
@@ -880,7 +880,7 @@ export const SentinelPage: FC = () => {
           {/* Interactive Feed Container */}
           <div className="mt-14 rounded-2xl border border-line bg-base-raised shadow-card overflow-hidden">
             {/* Filter Tabs Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line p-4 sm:px-6 bg-base-soft">
+            <div className="flex flex-col items-start gap-3 border-b border-line p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 bg-base-soft">
               <div className="flex items-center gap-2">
                 <Filter className="h-4 w-4 text-ink-faint" />
                 <span className="text-xs font-semibold uppercase tracking-wider text-ink-faint font-mono">
@@ -888,7 +888,7 @@ export const SentinelPage: FC = () => {
                 </span>
               </div>
 
-              <div className="flex flex-wrap gap-2 text-xs">
+              <div className="grid w-full grid-cols-1 gap-2 text-xs sm:w-auto sm:flex sm:flex-wrap">
                 {[
                   { id: "all", label: "All Intercepts" },
                   { id: "blocked", label: "Blocked & Quarantined" },
@@ -899,7 +899,7 @@ export const SentinelPage: FC = () => {
                     key={f.id}
                     type="button"
                     onClick={() => setActiveFeedFilter(f.id)}
-                    className={`rounded-lg px-3 py-1.5 font-medium transition-all cursor-pointer ${
+                    className={`w-full rounded-lg px-3 py-2 text-left font-medium transition-all cursor-pointer sm:w-auto sm:py-1.5 ${
                       activeFeedFilter === f.id
                         ? "bg-accent text-white shadow-sm"
                         : "bg-base text-ink-body hover:bg-base-soft"
@@ -912,22 +912,22 @@ export const SentinelPage: FC = () => {
             </div>
 
             {/* Split layout: Event List on Left / Forensic Detail on Right */}
-            <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-line">
+            <div className="grid min-w-0 grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-line">
               {/* Event List */}
-              <div className="lg:col-span-5 p-4 sm:p-5 space-y-3 max-h-[500px] overflow-y-auto">
+              <div className="min-w-0 lg:col-span-5 p-3 sm:p-5 space-y-3 max-h-[500px] overflow-y-auto">
                 {filteredEvents.map((ev) => {
                   const isSelected = selectedEvent.id === ev.id;
                   return (
                     <div
                       key={ev.id}
                       onClick={() => setSelectedEvent(ev)}
-                      className={`rounded-xl border p-3.5 transition-all cursor-pointer text-xs ${
+                      className={`min-w-0 rounded-xl border p-3.5 transition-all cursor-pointer text-xs ${
                         isSelected
                           ? "border-accent bg-accent/10 shadow-sm"
                           : "border-line bg-base hover:bg-base-soft"
                       }`}
                     >
-                      <div className="flex items-center justify-between">
+                      <div className="flex min-w-0 items-center justify-between gap-3">
                         <span
                           className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
                             ev.severity === "CRITICAL"
@@ -941,19 +941,19 @@ export const SentinelPage: FC = () => {
                         >
                           {ev.severity}
                         </span>
-                        <span className="text-[11px] text-ink-faint font-mono">{ev.timestamp}</span>
+                        <span className="shrink-0 text-[11px] text-ink-faint font-mono">{ev.timestamp}</span>
                       </div>
 
-                      <h5 className="mt-2 font-semibold text-ink text-sm">{ev.title}</h5>
+                      <h5 className="mt-2 break-words font-semibold text-ink text-sm">{ev.title}</h5>
 
-                      <div className="mt-1.5 flex items-center gap-2 font-mono text-[11px] text-ink-faint">
+                      <div className="mt-1.5 flex min-w-0 items-center gap-2 font-mono text-[11px] text-ink-faint">
                         <span className="font-bold text-accent">{ev.method}</span>
-                        <span className="truncate">{ev.endpoint}</span>
+                        <span className="min-w-0 flex-1 truncate">{ev.endpoint}</span>
                       </div>
 
-                      <div className="mt-2 flex items-center justify-between text-[11px] text-ink-body border-t border-line/60 pt-2">
-                        <span>Action: {ev.actionTaken}</span>
-                        <span className="font-mono text-ink-faint">{ev.sourceIp}</span>
+                      <div className="mt-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-[11px] text-ink-body border-t border-line/60 pt-2">
+                        <span className="min-w-0 flex-1 break-words">Action: {ev.actionTaken}</span>
+                        <span className="break-all font-mono text-ink-faint">{ev.sourceIp}</span>
                       </div>
                     </div>
                   );
@@ -961,7 +961,7 @@ export const SentinelPage: FC = () => {
               </div>
 
               {/* Forensic Details Pane */}
-              <div className="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between bg-base-soft/40">
+              <div className="min-w-0 lg:col-span-7 p-4 sm:p-8 flex flex-col justify-between bg-base-soft/40">
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-4">
                     <div>
@@ -989,31 +989,31 @@ export const SentinelPage: FC = () => {
                   </div>
 
                   <div className="mt-6 space-y-4 text-xs font-mono">
-                    <div className="rounded-xl border border-line bg-base p-4">
+                    <div className="min-w-0 rounded-xl border border-line bg-base p-4">
                       <span className="text-ink-faint uppercase tracking-wider text-[10px]">
                         Target Endpoint &amp; Method
                       </span>
-                      <p className="mt-1 text-sm font-bold text-ink">
-                        <span className="text-accent mr-2">{selectedEvent.method}</span>
-                        <span>{selectedEvent.endpoint}</span>
+                      <p className="mt-1 min-w-0 break-all text-sm font-bold text-ink">
+                        <span className="mr-2 inline-block text-accent">{selectedEvent.method}</span>
+                        <span className="break-all">{selectedEvent.endpoint}</span>
                       </p>
                     </div>
 
-                    <div className="rounded-xl border border-line bg-base p-4">
+                    <div className="min-w-0 rounded-xl border border-line bg-base p-4">
                       <span className="text-ink-faint uppercase tracking-wider text-[10px]">
                         Forensic Explanation &amp; Attack Context
                       </span>
-                      <p className="mt-1 text-sm font-sans text-ink-body leading-relaxed">
+                      <p className="mt-1 break-words text-sm font-sans text-ink-body leading-relaxed">
                         {selectedEvent.details}
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-xl border border-line bg-base p-3">
+                    <div className="grid min-w-0 grid-cols-2 gap-3">
+                      <div className="min-w-0 rounded-xl border border-line bg-base p-3">
                         <span className="text-ink-faint uppercase tracking-wider text-[10px]">
                           Threat Actor Profile
                         </span>
-                        <p className="mt-0.5 text-xs font-semibold text-ink">
+                        <p className="mt-0.5 break-words text-xs font-semibold text-ink">
                           {selectedEvent.actor}
                         </p>
                         <p className="text-[11px] text-ink-faint mt-0.5">
@@ -1021,11 +1021,11 @@ export const SentinelPage: FC = () => {
                         </p>
                       </div>
 
-                      <div className="rounded-xl border border-line bg-base p-3">
+                      <div className="min-w-0 rounded-xl border border-line bg-base p-3">
                         <span className="text-ink-faint uppercase tracking-wider text-[10px]">
                           Enforced Action
                         </span>
-                        <p className="mt-0.5 text-xs font-bold text-brand-green-500">
+                        <p className="mt-0.5 break-words text-xs font-bold text-brand-green-500">
                           {selectedEvent.actionTaken}
                         </p>
                         <p className="text-[11px] text-ink-faint mt-0.5">

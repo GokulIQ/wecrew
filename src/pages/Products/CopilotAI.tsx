@@ -829,14 +829,14 @@ export const CopilotAIPage: FC = () => {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500/20 text-cyan-400 font-bold">
                   <BrainCircuit className="h-5 w-5" />
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className="font-semibold text-sm text-white">Ask Copilot Assistant</span>
                     <span className="rounded bg-brand-green-500/20 px-2 py-0.5 text-[11px] font-mono text-brand-green-400">
                       RAG Active
                     </span>
                   </div>
-                  <p className="text-xs text-white/50">
+                  <p className="text-xs text-white/50 break-words">
                     Active Knowledge Base:{" "}
                     <span className="text-cyan-300 font-mono">{activeScenario.knowledgeBase}</span>
                   </p>
@@ -857,9 +857,9 @@ export const CopilotAIPage: FC = () => {
             </div>
 
             {/* Grid layout: Left Scenarios Selector / Right Chat Display */}
-            <div className="grid lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
               {/* Left Column: Preset Question Scenarios */}
-              <div className="lg:col-span-4 p-4 sm:p-5 bg-white/[0.01]">
+              <div className="min-w-0 lg:col-span-4 p-4 sm:p-5 bg-white/[0.01]">
                 <p className="text-xs font-semibold uppercase tracking-wider text-white/50 font-mono mb-3">
                   Sample Enterprise Queries
                 </p>
@@ -877,9 +877,9 @@ export const CopilotAIPage: FC = () => {
                             : "border-white/10 bg-white/[0.02] text-white/70 hover:bg-white/[0.06] hover:text-white"
                         }`}
                       >
-                        <div className="flex items-center justify-between">
-                          <span className="font-semibold text-sm text-white">{scenario.title}</span>
-                          <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono text-white/60">
+                        <div className="flex flex-wrap items-center justify-between gap-1.5">
+                          <span className="min-w-0 font-semibold text-sm text-white">{scenario.title}</span>
+                          <span className="max-w-full rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono text-white/60">
                             {scenario.badge}
                           </span>
                         </div>
@@ -904,11 +904,11 @@ export const CopilotAIPage: FC = () => {
               </div>
 
               {/* Right Column: Conversational Chat Stream */}
-              <div className="lg:col-span-8 p-4 sm:p-6 flex flex-col justify-between min-h-[460px]">
+              <div className="min-w-0 lg:col-span-8 p-4 sm:p-6 flex flex-col justify-between min-h-[460px]">
                 <div className="space-y-6">
                   {/* User Message Bubble */}
-                  <div className="flex items-start gap-3 justify-end">
-                    <div className="max-w-xl rounded-2xl bg-cyan-500/20 border border-cyan-400/40 p-4 text-white text-sm">
+                  <div className="flex min-w-0 items-start gap-3 justify-end">
+                    <div className="min-w-0 max-w-xl rounded-2xl bg-cyan-500/20 border border-cyan-400/40 p-4 text-white text-sm">
                       <p className="font-medium">{activeScenario.query}</p>
                       <div className="mt-2 flex items-center justify-between text-[11px] text-cyan-200/70 border-t border-cyan-400/20 pt-1.5">
                         <span>User: SRE On-Call</span>
@@ -921,20 +921,20 @@ export const CopilotAIPage: FC = () => {
                   </div>
 
                   {/* Copilot Response Bubble */}
-                  <div className="flex items-start gap-3">
+                  <div className="flex min-w-0 items-start gap-3">
                     <div className="h-8 w-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-xs font-bold text-white flex-none shadow-md">
                       CP
                     </div>
-                    <div className="max-w-2xl rounded-2xl bg-white/[0.04] border border-white/15 p-4 sm:p-5 text-white text-sm">
+                    <div className="min-w-0 w-full max-w-2xl rounded-2xl bg-white/[0.04] border border-white/15 p-4 sm:p-5 text-white text-sm">
                       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-                        <div className="flex items-center gap-2">
+                        <div className="flex min-w-0 flex-wrap items-center gap-2">
                           <span className="font-semibold text-cyan-300">WeCrew Copilot AI</span>
                           <span className="rounded bg-brand-green-500/20 px-2 py-0.5 text-[10px] font-mono text-brand-green-300">
                             Verified Response
                           </span>
                         </div>
                         {activeScenario.incidentContext && (
-                          <span className="text-[11px] text-amber-300/80 font-mono">
+                          <span className="break-words text-[11px] text-amber-300/80 font-mono">
                             {activeScenario.incidentContext}
                           </span>
                         )}
@@ -949,11 +949,11 @@ export const CopilotAIPage: FC = () => {
                           {activeScenario.sources.map((src) => (
                             <span
                               key={src.docId}
-                              className="inline-flex items-center gap-1.5 rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-1 text-xs font-mono text-cyan-200"
+                              className="inline-flex min-w-0 max-w-full items-start gap-1.5 break-words rounded-lg border border-cyan-400/30 bg-cyan-500/10 px-2.5 py-1 text-xs font-mono text-cyan-200"
                             >
                               <BookOpenCheck className="h-3 w-3 text-cyan-400" />
-                              <span>{src.title}</span>
-                              <span className="text-white/40">({src.docId})</span>
+                              <span className="min-w-0 break-words">{src.title}</span>
+                              <span className="break-all text-white/40">({src.docId})</span>
                             </span>
                           ))}
                         </div>
